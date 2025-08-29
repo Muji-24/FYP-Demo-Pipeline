@@ -2,71 +2,204 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VizOps - Team DevTunners</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="background-animation">
+    <div class="particles"></div>
+  </div>
+  
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">🚀</span>
+        <span class="logo-text">VizOps</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Features</a>
+        <a href="#" class="nav-link">Team</a>
+        <a href="#" class="nav-link">Contact</a>
+      </div>
+      <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+      </div>
+    </div>
+  </nav>
+
   <header>
-    <h1>🚀 VizOps</h1>
-    <p class="subtitle">CI/CD Pipeline Monitoring Tool</p>
+    <div class="header-content">
+      <h1>🚀 VizOps</h1>
+      <p class="subtitle">CI/CD Pipeline Monitoring Tool</p>
+      <div class="typing-demo">
+        <span class="typed-text"></span>
+        <span class="cursor">&nbsp;</span>
+      </div>
+    </div>
   </header>
 
-  <section class="intro">
-    <h2>👨‍💻 Team DevTunners</h2>
-    <div class="cards">
-      <div class="card">Mujtaba<br><small>22F-3403</small></div>
-      <div class="card">Humail<br><small>22F-3395</small></div>
-      <div class="card">Mehroze<br><small>22F-3423</small></div>
-    </div>
-    <p><b>Supervisor:</b> Sir Shahbaz Ayaz</p>
-    <p><b>External Supervisor:</b> Sir Jawad Khalid Cheema</p>
-  </section>
+  <main>
+    <section class="intro">
+      <h2>👨‍💻 Team DevTunners</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-icon">
+              <i class="fas fa-user"></i>
+            </div>
+            <h3>Mujtaba</h3>
+            <p><small>22F-3403</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <div class="card-icon">
+              <i class="fas fa-user"></i>
+            </div>
+            <h3>Humail</h3>
+            <p><small>22F-3395</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <div class="card-icon">
+              <i class="fas fa-user"></i>
+            </div>
+            <h3>Mehroze</h3>
+            <p><small>22F-3423</small></p>
+          </div>
+        </div>
+      </div>
+      <div class="supervisors">
+        <p><b>Supervisor:</b> Sir Shahbaz Ayaz</p>
+        <p><b>External Supervisor:</b> Sir Jawad Khalid Cheema</p>
+      </div>
+    </section>
 
-  <section class="desc">
-    <h2>📖 Project Overview</h2>
-    <p>
-      VizOps is a tool designed to monitor Jenkins CI/CD pipelines in real-time. 
-      Our vision is to build an interactive dashboard that gives clear visibility 
-      into pipeline performance, detects failures quickly, and provides meaningful insights 
-      to enhance DevOps workflows.
-    </p>
-  </section>
+    <section class="desc">
+      <h2>📖 Project Overview</h2>
+      <p>
+        VizOps is a tool designed to monitor Jenkins CI/CD pipelines in real-time. 
+        Our vision is to build an interactive dashboard that gives clear visibility 
+        into pipeline performance, detects failures quickly, and provides meaningful insights 
+        to enhance DevOps workflows.
+      </p>
+    </section>
 
-  <section class="features">
-    <h2>✨ Planned Features</h2>
-    <ul>
-      <li>Real-time pipeline health monitoring</li>
-      <li>Visual dashboards with charts and graphs</li>
-      <li>Failure trend analysis</li>
-      <li>Build performance tracking</li>
-      <li>Custom alerts & notifications</li>
-      <li>Multi-pipeline overview</li>
-    </ul>
-  </section>
+    <section class="features">
+      <h2>✨ Planned Features</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <h3>Real-time monitoring</h3>
+          <p>Monitor pipeline health in real-time with live updates</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Visual dashboards</h3>
+          <p>Interactive charts and graphs for data visualization</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <h3>Failure analysis</h3>
+          <p>Detect and analyze failure trends in your pipelines</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          <h3>Performance tracking</h3>
+          <p>Track build performance metrics over time</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-bell"></i>
+          </div>
+          <h3>Custom alerts</h3>
+          <p>Get notified about important pipeline events</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3>Multi-pipeline overview</h3>
+          <p>Monitor multiple pipelines from a single dashboard</p>
+        </div>
+      </div>
+    </section>
 
-  <section class="tech">
-    <h2>🛠️ Technology Stack</h2>
-    <div class="stack">
-      <span>Node.js</span>
-      <span>Express.js</span>
-      <span>Jenkins API</span>
-      <span>React.js (future)</span>
-      <span>Chart.js / D3.js (future)</span>
-      <span>MongoDB</span>
-    </div>
-  </section>
+    <section class="tech">
+      <h2>🛠️ Technology Stack</h2>
+      <div class="tech-badges">
+        <span class="tech-badge">NextJs</span>
+        <span class="tech-badge">Go</span>
+        <span class="tech-badge">Express.js</span>
+        <span class="tech-badge">Jenkins API</span>
+        <span class="tech-badge">Chart.js / D3.js</span>
+        <span class="tech-badge">MongoDB</span>
+        <span class="tech-badge">Github</span>
+      </div>
+    </section>
 
-  <section class="goals">
-    <h2>🎯 Project Goals</h2>
-    <p>
-      The main goal of VizOps is to empower DevOps teams with a reliable, 
-      user-friendly, and visually rich platform that reduces downtime, 
-      improves deployment efficiency, and ensures smooth CI/CD operations.
-    </p>
-  </section>
+    <section class="goals">
+      <h2>🎯 Project Goals</h2>
+      <p>
+        The main goal of VizOps is to empower DevOps teams with a reliable, 
+        user-friendly, and visually rich platform that reduces downtime, 
+        improves deployment efficiency, and ensures smooth CI/CD operations.
+      </p>
+    </section>
+
+    <section class="demo">
+      <h2>📊 Live Demo Preview</h2>
+      <div class="demo-container">
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-value">98%</div>
+            <div class="metric-label">Success Rate</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">12.4s</div>
+            <div class="metric-label">Avg. Build Time</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">42</div>
+            <div class="metric-label">Builds Today</div>
+          </div>
+        </div>
+        <div class="chart-placeholder">
+          <div class="chart-bars">
+            <div class="bar" style="height: 70%"></div>
+            <div class="bar" style="height: 85%"></div>
+            <div class="bar" style="height: 60%"></div>
+            <div class="bar" style="height: 90%"></div>
+            <div class="bar" style="height: 75%"></div>
+            <div class="bar" style="height: 80%"></div>
+            <div class="bar" style="height: 65%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 Team DevTunners | Final Year Project</p>
+    <div class="footer-content">
+      <p>© 2025 Team DevTunners | Final Year Project</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>
