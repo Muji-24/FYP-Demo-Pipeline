@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        VERCEL_TOKEN = credentials('vercel-token')   // Add this in Jenkins credentials
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -20,15 +24,18 @@ pipeline {
             }
         }
 
-        stage('Build & Deploy') {
+        stage('Deploy to Vercel') {
             steps {
-                sh 'echo "Add build/deploy commands here"'
+                sh '''
+                npm install -g vercel
+                vercel --prod --token=$FYP-Demo-Pipeline --yes
+                '''
             }
         }
     }
 
     post {
-        success { echo 'Pipeline finished successfully!' }
-        failure { echo 'Pipeline failed!' }
+        success { echo '✅ Pipeline finished & deployed to Vercel!' }
+        failure { echo '❌ Pipeline failed!' }
     }
 }
