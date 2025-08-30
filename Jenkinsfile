@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        RAILWAY_TOKEN = credentials('railway-token') // Jenkins credential ID
+        RAILWAY_TOKEN = credentials('railway-token')
     }
 
     stages {
@@ -15,12 +15,13 @@ pipeline {
         stage('Install') {
             steps {
                 sh 'npm install'
+                sh 'npm install @railway/cli --save-dev'  // local install
             }
         }
 
         stage('Test') {
             steps {
-                sh 'npm test'  // change if you use another test commandsS
+                sh 'npm test'
             }
         }
 
@@ -28,9 +29,8 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'railway-token', variable: 'RAILWAY_TOKEN')]) {
                     sh '''
-                        npm install -g @railway/cli
-                        railway login --token $RAILWAY_TOKEN
-                        railway up --service 0c2fbb35-8aab-417c-ac9b-082958dcedab --detach
+                        npx railway login --token $RAILWAY_TOKEN
+                        npx railway up --service 0c2fbb35-8aab-417c-ac9b-082958dcedab --detach
                     '''
                 }
             }
