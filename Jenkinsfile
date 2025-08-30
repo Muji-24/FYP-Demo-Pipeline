@@ -26,13 +26,17 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        sstage('Deploy') {
     steps {
-        withEnv(["RAILWAY_TOKEN=${env.RAILWAY_TOKEN}"]) {
-            sh 'npx railway up'
+        withCredentials([string(credentialsId: 'railway_token', variable: 'RAILWAY_TOKEN')]) {
+            sh '''
+                export RAILWAY_TOKEN=$RAILWAY_TOKEN
+                npx railway up
+            '''
         }
     }
 }
+
 
     }
 }
