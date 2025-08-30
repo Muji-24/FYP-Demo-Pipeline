@@ -25,16 +25,15 @@ pipeline {
         }
 
         stage('Deploy to Railway') {
-            when {
-                expression { currentBuild.currentResult == 'SUCCESS' }
-            }
-            steps {
-                sh '''
-                    npm install -g @railway/cli
-                    railway login --token $RAILWAY_TOKEN
-                    railway up --service 0c2fbb35-8aab-417c-ac9b-082958dcedab --detach
-                '''
-            }
+    steps {
+        withCredentials([string(credentialsId: 'railway-token', variable: 'RAILWAY_TOKEN')]) {
+            sh '''
+                npx railway login --token $RAILWAY_TOKEN
+                npx railway up --service 0c2fbb35-8aab-417c-ac9b-082958dcedab --detach
+            '''
         }
+    }
+}
+
     }
 }
