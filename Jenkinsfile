@@ -28,14 +28,13 @@ pipeline {
 
         stage('Deploy') {
     steps {
-        withCredentials([string(credentialsId: 'railway_token', variable: 'RAILWAY_TOKEN')]) {
-            sh '''
-                export RAILWAY_TOKEN=$RAILWAY_TOKEN
-                npx railway up
-            '''
-        }
+        sh '''
+            npx railway login --apiKey $RAILWAY_TOKEN
+            npx railway up --yes
+        '''
     }
 }
+
 
 
     }
