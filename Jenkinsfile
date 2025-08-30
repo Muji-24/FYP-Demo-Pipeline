@@ -1,10 +1,15 @@
 pipeline {
     agent any
 
+    environment {
+        // Your GitHub credentials stored in Jenkins
+        GITHUB_CREDS = credentials('github-creds')
+    }
+
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Muji-24/FYP-Demo-Pipeline'
+                git branch: 'main', url: 'https://github.com/Muji-24/FYP-Demo-Pipeline.git'
             }
         }
 
@@ -14,28 +19,26 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Run Tests') {
             steps {
-                sh 'npm test || echo "No tests defined"'
+                // if no tests, just use `echo "No tests"`
+                sh 'npm test || echo "No tests found"'
             }
         }
 
-        stage('Deploy to Railway') {
-    steps {
-        sh '''
-          git config --global user.email "mujtabarehman320@gmail.com"
-          git config --global user.name "Jenkins"
-          git add .
-          git diff --cached --quiet || git commit -m "CI/CD: Update from Jenkins"
-          git push origin main
-        '''
-    }
-}
-
-    }
-
-    post {
-        success { echo '✅ Pipeline finished & pushed to GitHub (Railway will auto-deploy).' }
-        failure { echo '❌ Pipeline failed!' }
+        stage('Push Back to GitHub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'USER', passwordVariable: 'TOKEN')]) {
+                    sh '''
+                        git config --global user.email "ci-bot@example.com"
+                        git config --global user.name "CI Bot"
+                        git remote set-url origin https://$USER:$TOKEN@github.com/Muji-24/FYP-Demo-Pipeline.git
+                        git add .
+                        git commit -m "Auto commit from Jenkins [skip ci]" || echo "No changes to commit"
+                        git push origin main
+                    '''
+                }
+            }
+        }
     }
 }
