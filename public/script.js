@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
   ];
   const typingDelay = 100;
   const erasingDelay = 50;
-  const newTextDelay = 1500{;
+  const newTextDelay = 1500;
   let textArrayIndex = 0;
   let charIndex = 0;
-  }
+  
   function type() {
     if (charIndex < textArray[textArrayIndex].length) {
       if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
