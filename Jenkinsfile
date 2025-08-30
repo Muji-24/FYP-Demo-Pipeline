@@ -31,12 +31,13 @@ pipeline {
 
         // Deploy using Railway CLI
         stage('Deploy') {
-            steps {
-                withCredentials([string(credentialsId: 'railway_token', variable: 'RAILWAY_TOKEN')]) {
-                    sh 'npx railway up -- --yes'
-                }
-            }
+    steps {
+        withCredentials([string(credentialsId: 'railway_token', variable: 'RAILWAY_TOKEN')]) {
+            sh 'npx railway up -- --yes'
         }
+    }
+}
+
     }
 
     post {
