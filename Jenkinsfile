@@ -20,15 +20,19 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'npm test'  // change if you use another test command
+                sh 'npm test' // change if you use another test command
             }
         }
 
         stage('Deploy to Railway') {
+            when {
+                expression { currentBuild.currentResult == 'SUCCESS' }
+            }
             steps {
                 sh '''
-                    npx railway login --token $RAILWAY_TOKEN
-                    npx railway up --service YOUR_SERVICE_NAME
+                    npm install -g @railway/cli
+                    railway login --token $RAILWAY_TOKEN
+                    railway up --service 0c2fbb35-8aab-417c-ac9b-082958dcedab --detach
                 '''
             }
         }
