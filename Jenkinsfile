@@ -23,16 +23,17 @@ pipeline {
         }
 
         stage('Deploy to Railway') {
-            steps {
-                sh '''
-                  git config --global user.email "you@example.com"
-                  git config --global user.name "Jenkins"
-                  git add .
-                  git commit -m "CI/CD: Update from Jenkins" || echo "No changes"
-                  git push origin main
-                '''
-            }
-        }
+    steps {
+        sh '''
+          git config --global user.email "mujtabarehman320@gmail.com"
+          git config --global user.name "Jenkins"
+          git add .
+          git diff --cached --quiet || git commit -m "CI/CD: Update from Jenkins"
+          git push origin main
+        '''
+    }
+}
+
     }
 
     post {
