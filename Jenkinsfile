@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-    RAILWAY_TOKEN = credentials('railway-token')
+    RAILWAY_TOKEN = credentials('railway_token')
 }
 
 
