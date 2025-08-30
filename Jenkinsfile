@@ -2,8 +2,9 @@ pipeline {
     agent any
 
     environment {
-        RAILWAY_TOKEN = credentials('railway-token')
-    }
+    RAILWAY_TOKEN = credentials('railway-token')
+}
+
 
     stages {
         stage('Checkout') {
@@ -25,15 +26,13 @@ pipeline {
             }
         }
 
-        stage('Deploy to Railway') {
-            steps {
-                withCredentials([string(credentialsId: 'railway-token', variable: 'RAILWAY_TOKEN')]) {
-                    sh '''
-                        npx railway login --token $RAILWAY_TOKEN
-                        npx railway up --service 0c2fbb35-8aab-417c-ac9b-082958dcedab --detach
-                    '''
-                }
-            }
+        stage('Deploy') {
+    steps {
+        withEnv(["RAILWAY_TOKEN=${env.RAILWAY_TOKEN}"]) {
+            sh 'npx railway up'
         }
+    }
+}
+
     }
 }
