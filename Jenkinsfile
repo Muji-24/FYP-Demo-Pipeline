@@ -1,5 +1,3 @@
-does i have to do some hanges here?
-
 pipeline {
     agent any
 
