@@ -20,7 +20,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'npm test'  // change if you use another test command
+                sh 'npm test'  // change if you use another test commandsS
             }
         }
 
