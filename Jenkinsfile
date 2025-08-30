@@ -20,20 +20,20 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'npm test' // change if you use another test command
+                sh 'npm test'  // change if you use another test command
             }
         }
 
         stage('Deploy to Railway') {
-    steps {
-        withCredentials([string(credentialsId: 'railway-token', variable: 'RAILWAY_TOKEN')]) {
-            sh '''
-                npx railway login --token $RAILWAY_TOKEN
-                npx railway up --service 0c2fbb35-8aab-417c-ac9b-082958dcedab --detach
-            '''
+            steps {
+                withCredentials([string(credentialsId: 'railway-token', variable: 'RAILWAY_TOKEN')]) {
+                    sh '''
+                        npm install -g @railway/cli
+                        railway login --token $RAILWAY_TOKEN
+                        railway up --service 0c2fbb35-8aab-417c-ac9b-082958dcedab --detach
+                    '''
+                }
+            }
         }
-    }
-}
-
     }
 }
