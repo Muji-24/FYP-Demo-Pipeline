@@ -2,9 +2,8 @@ pipeline {
     agent any
 
     environment {
-    RAILWAY_TOKEN = credentials('railway_token')
-}
-
+        RAILWAY_TOKEN = credentials('railway_token')
+    }
 
     stages {
         stage('Checkout') {
@@ -16,7 +15,8 @@ pipeline {
         stage('Install') {
             steps {
                 sh 'npm install'
-                sh 'npm install @railway/cli --save-dev'  // local install
+                // Optional: remove local CLI install if globally installed
+                // sh 'npm install @railway/cli --save-dev'
             }
         }
 
@@ -27,15 +27,11 @@ pipeline {
         }
 
         stage('Deploy') {
-    steps {
-        sh '''
-            npx railway login --apiKey $RAILWAY_TOKEN
-            npx railway up --yes
-        '''
-    }
-}
-
-
-
+            steps {
+                withCredentials([string(credentialsId: 'railway_token', variable: 'RAILWAY_TOKEN')]) {
+                    sh 'npx railway up --yes'
+                }
+            }
+        }
     }
 }
